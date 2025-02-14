@@ -1,0 +1,18 @@
+
+<%unless @article.errors.empty? %>
+  <ul style="color: red">
+    <%@article.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @article, url: is_edit ? article_path(@article) : article_index_path  do |form| %>
+  <div>
+    <%= form.text_field :title %>
+  </div>
+  <div style="margin-top: 20px">
+    <%= form.textarea :desc %>
+  </div>
+  <%= form.submit %>
+<% end %>
