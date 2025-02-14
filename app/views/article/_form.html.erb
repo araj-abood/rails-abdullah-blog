@@ -1,18 +1,23 @@
 
-<%unless @article.errors.empty? %>
-  <ul style="color: red">
-    <%@article.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+<div class="container py-5" style="align-items: center">
+
+
+<%= render "shared/error" %>
+
+
+<%= form_with model: @article, url: is_edit ? article_path(@article) : article_index_path, class: "form-article shadow-sm"  do |form| %>
+  <div class="form-article__label-value">
+    <%= form.label :title, class: "form-article__label"%>
+    <%= form.text_field :title, class: "form_article__value", placeholder: "Title"%>
+  </div>
+    <div class="form-article__label-value" style="margin-top: 10px">
+      <%= form.label :desc, class: "form-article__label" %>
+      <%= form.textarea :desc, class: "form_article__value", placeholder: "Description", rows: 10 %>
+    </div>
+
+    <div style="text-align: center" class="mt-5">
+      <%= form.submit class:"btn btn-outline-primary article-form__submit" %>
+    </div>
 <% end %>
 
-<%= form_with model: @article, url: is_edit ? article_path(@article) : article_index_path  do |form| %>
-  <div>
-    <%= form.text_field :title %>
-  </div>
-  <div style="margin-top: 20px">
-    <%= form.textarea :desc %>
-  </div>
-  <%= form.submit %>
-<% end %>
+</div>

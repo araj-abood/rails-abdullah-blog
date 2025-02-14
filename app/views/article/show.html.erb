@@ -1,10 +1,23 @@
-<h2>Title</h2>
-<p><%=@article.title %></p>
-<h2>Description</h2>
-<p><%=@article.desc %></p>
 
-<p>
-  <%= link_to "Back", article_index_path %>
-  |
-  <%= link_to "Edit", edit_article_path(@article) %>
-</p>
+<h1 style="text-align: center"><%= @article.title %></h1>
+
+<div class="container">
+  <div class="mb-4 shadow rounded">
+    <div class="card text-center">
+      <div class="card-header font-italic">
+        By Abdullah Al-araj
+      </div>
+      <div class="card-body">
+        <div class="card-text" style="text-align: left"><%=  simple_format @article.desc %></div>
+        <div style="display: flex; flex-direction: row; justify-content: center; gap: 20px">
+          <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-primary" %>
+          <%= button_to "Delete", article_path(@article), method: :delete, class:"btn btn-outline-danger"%>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <small>Created  <%= time_ago_in_words @article.created_at %> ago ,</small>
+        <small>Edited  <%= time_ago_in_words @article.updated_at %> ago</small>
+      </div>
+    </div>
+  </div>
+</div>

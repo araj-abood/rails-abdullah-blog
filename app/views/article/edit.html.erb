@@ -1,11 +1,6 @@
 
-<%unless @article.errors.empty? %>
-  <ul style="color: red">
-    <%@article.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-
-    <% end %>
-  </ul>
-<% end %>
-
 <%= render  "form", is_edit: true %>
+
+<div style="text-align: center">
+  <%= link_to "[ Cancel and return to Articles listing ]", article_index_path, class: "article-form__go-back-link" %>
+</div>

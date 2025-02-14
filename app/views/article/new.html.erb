@@ -1,1 +1,6 @@
-<%= render  "form", is_edit: false %>
+  <h1 style="text-align: center">Create Article</h1>
+  <%= render  "form", is_edit: false %>
+
+  <div style="text-align: center">
+    <%= link_to "[ Cancel and return to Articles listing ]", article_index_path, class: "article-form__go-back-link" %>
+  </div>

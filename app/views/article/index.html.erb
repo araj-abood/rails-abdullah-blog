@@ -1,29 +1,33 @@
-<h1>All Articles</h1>
+<h1 style="text-align: center">All Articles</h1>
 
 
-<table>
-  <thead>
-  <tr>
-    <td>Title</td>
-    <td colspan="2">Actions</td>
 
-  </tr>
-  </thead>
-  <tbody>
-  <% @articles.each do |article| %>
-  <tr>
-    <td>
-      <%= article.title %></td>
-    <td>
-      <%= link_to "View", article_path(article) %>
-    </td>
-    <td>
-      <%= button_to "Delete", article_path(article), method: :delete %>
-    </td>
-  </tr>
+  <div class="container my-4">
+      <% @articles.each do |article| %>
+        <div class="mb-4 shadow rounded">
+          <div class="card text-center">
+            <div class="card-header font-italic">
+              By Abdullah Al-araj
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to article.title, article_path(article),  class:"link-green" %></h5>
+              <p class="card-text"><%= truncate article.desc, length: 20 %></p>
+              <div style="display: flex; flex-direction: row; justify-content: center; gap: 20px">
+                <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
+                <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-primary" %>
+                <%= button_to "Delete", article_path(article), method: :delete, class:"btn btn-outline-danger"%>
 
-  <% end %>
-  </tbody>
-</table>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              <small>Created  <%= time_ago_in_words article.created_at %> ago ,</small>
+              <small>Edited  <%= time_ago_in_words article.updated_at %> ago</small>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-<%= link_to "Create article", new_article_path %>
+  <%= link_to "Create article", new_article_path %>
+
+

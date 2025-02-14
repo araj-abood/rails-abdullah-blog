@@ -28,8 +28,10 @@
 
   <body>
   <%= render "layouts/navbar" %>
-  <%= render 'layouts/flash_message' %>
+  <main id="page-content" class="main-body">
+    <%= render 'layouts/flash_message' %>
     <%= yield %>
+  </main>
   <%= render 'layouts/footer' %>
   </body>
 </html>
