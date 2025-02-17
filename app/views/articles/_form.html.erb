@@ -2,10 +2,10 @@
 <div class="container py-5" style="align-items: center">
 
 
-<%= render "shared/error" %>
+<%= render "shared/error", obj: @article %>
 
 
-<%= form_with model: @article, url: is_edit ? article_path(@article) : article_index_path, class: "form-article shadow-sm"  do |form| %>
+<%= form_with model: @article, class: "form-article shadow-sm"  do |form| %>
   <div class="form-article__label-value">
     <%= form.label :title, class: "form-article__label"%>
     <%= form.text_field :title, class: "form_article__value", placeholder: "Title"%>
