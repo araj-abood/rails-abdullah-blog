@@ -18,7 +18,7 @@
     </div>
 
     <div style="text-align: center" class="mt-5">
-      <%= form.submit "Sign up", class:"btn btn-outline-primary article-form__submit" %>
+      <%= form.submit  @user.new_record? ? "Sign up" :"Update Account", class:"btn btn-outline-primary article-form__submit" %>
     </div>
   <% end %>
 
