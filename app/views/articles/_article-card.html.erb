@@ -1,0 +1,31 @@
+<div class="container my-4">
+  <% if articles.empty? %>
+    <h1 style="text-align: center">No articles, to see</h1>
+  <% end %>
+  <% articles.each do |article| %>
+    <div class="mb-4 shadow rounded">
+      <div class="card text-center">
+        <div class="card-header font-italic">
+          <% if article.user %>
+            <%= link_to "by #{article.user.username}", user_path(article.user) %>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to article.title, article_path(article), class: "link-green" %></h5>
+          <p class="card-text"><%= truncate article.desc, length: 20 %></p>
+          <div style="display: flex; flex-direction: row; justify-content: center; gap: 20px">
+            <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
+            <% if (logged_in? and current_user == article.user) or current_user.is_admin %>
+              <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-primary" %>
+              <%= button_to "Delete", article_path(article), method: :delete, class: "btn btn-outline-danger" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created  <%= time_ago_in_words article.created_at %> ago ,</small>
+          <small>Edited  <%= time_ago_in_words article.updated_at %> ago</small>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

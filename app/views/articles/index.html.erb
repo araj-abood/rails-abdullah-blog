@@ -1,33 +1,15 @@
 <h1 style="text-align: center">All Articles</h1>
 
 
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
 
-  <div class="container my-4">
-      <% @articles.each do |article| %>
-        <div class="mb-4 shadow rounded">
-          <div class="card text-center">
-            <div class="card-header font-italic">
-              by <%= article.user.username if article.user %>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title"><%= link_to article.title, article_path(article),  class:"link-green" %></h5>
-              <p class="card-text"><%= truncate article.desc, length: 20 %></p>
-              <div style="display: flex; flex-direction: row; justify-content: center; gap: 20px">
-                <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
-                <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-primary" %>
-                <%= button_to "Delete", article_path(article), method: :delete, class:"btn btn-outline-danger"%>
+<%= render "article-card", articles: @articles %>
 
-              </div>
-            </div>
-            <div class="card-footer text-muted">
-              <small>Created  <%= time_ago_in_words article.created_at %> ago ,</small>
-              <small>Edited  <%= time_ago_in_words article.updated_at %> ago</small>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+<div class="flickr_pagination mb- 4">
+  <%= will_paginate @articles, :container => false %>
+</div>
 
-  <%= link_to "Create articles", new_article_path %>
 
 
