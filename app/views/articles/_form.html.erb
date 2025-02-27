@@ -1,23 +1,22 @@
-
 <div class="container py-5" style="align-items: center">
 
 
-<%= render "shared/error", obj: @article %>
+  <%= render "shared/error", obj: @article %>
 
 
-<%= form_with model: @article, class: "form-article shadow-sm"  do |form| %>
-  <div class="form-article__label-value">
-    <%= form.label :title, class: "form-article__label"%>
-    <%= form.text_field :title, class: "form_article__value", placeholder: "Title"%>
-  </div>
+  <%= form_with model: @article, class: "form-group  shadow-sm" do |form| %>
+    <div class="form-article__label-value">
+      <%= form.label :title, class: "form-article__label" %>
+      <%= form.text_field :title, class: "form-control", placeholder: "Title" %>
+    </div>
     <div class="form-article__label-value" style="margin-top: 10px">
       <%= form.label :desc, class: "form-article__label" %>
-      <%= form.textarea :desc, class: "form_article__value", placeholder: "Description", rows: 10 %>
+      <%= form.textarea :desc, class: "form-control", placeholder: "Description", rows: 10 %>
     </div>
 
     <div style="text-align: center" class="mt-5">
-      <%= form.submit class:"btn btn-outline-primary article-form__submit" %>
+      <%= form.submit class: "btn btn-outline-primary article-form__submit" %>
     </div>
-<% end %>
+  <% end %>
 
 </div>
