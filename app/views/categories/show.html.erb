@@ -1,0 +1,9 @@
+<h1 style="text-align: center">Category: <%= @category.name %></h1>
+
+<% if logged_in? && current_user.is_admin? %>
+  <div class="text-center mt-4">
+    <%= link_to "Edit category name", edit_category_path(@category), class: "btn btn-outline-info" %>
+  </div>
+<% end %>
+
+<%= render "articles/article-card", articles: @category.articles %>

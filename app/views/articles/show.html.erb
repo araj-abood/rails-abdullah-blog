@@ -6,6 +6,11 @@
       <div class="card-header font-italic">
         by <%= @article.user.username if @article.user %>
         <%= link_to gravator_for(@article.user, options = { size: 90 }), user_path(@article.user) %>
+        <% if !@article.categories.empty? %>
+          <div style="display: flex; flex-direction: row; justify-content: center; gap: 12px; margin-top: 20px">
+            <%= render @article.categories %>
+          </div>
+        <% end %>
       </div>
       <div class="card-body">
         <div class="card-text" style="text-align: left"><%= simple_format @article.desc %></div>

@@ -14,6 +14,11 @@
       <%= form.textarea :desc, class: "form-control", placeholder: "Description", rows: 10 %>
     </div>
 
+    <div class="form-article__label-value" style="margin-top: 10px">
+      <%= form.label :category, class: "form-article__label" %>
+      <%= form.collection_select(:category_ids, Category.all, :id, :name, { prompt: "Please select a category" }, { multiple: true, class: "custom-select" }) %>
+    </div>
+
     <div style="text-align: center" class="mt-5">
       <%= form.submit class: "btn btn-outline-primary article-form__submit" %>
     </div>

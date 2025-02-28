@@ -11,5 +11,10 @@
 
 <h3 style="text-align: center; margin-top: 10px">Articles</h3>
 
-<%= render "articles/article-card", articles: @user.articles %>
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
+
+
+<%= render "articles/article-card", articles: @articles %>
 

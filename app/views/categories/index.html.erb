@@ -1,0 +1,33 @@
+<h1 style="text-align: center">Categories</h1>
+
+<div class="container my-4">
+  <% if @categories.empty? %>
+    <h1 style="text-align: center">No articles, to see</h1>
+  <% end %>
+
+  <div class="flickr_pagination">
+    <%= will_paginate @categories, :container => false %>
+  </div>
+
+  <% @categories.each do |cat| %>
+    <div class="mb-4 shadow rounded">
+      <div class="card text-center">
+
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to cat.name, category_path(cat), class: "link-green" %></h5>
+          <% if cat.articles.any? %>
+            <p style="text-align: center"><%= pluralize(cat.articles.count, "Article") %></p>
+          <% end %>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created  <%= time_ago_in_words cat.created_at %> ago ,</small>
+          <small>Edited  <%= time_ago_in_words cat.updated_at %> ago</small>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="flickr_pagination">
+    <%= will_paginate @categories, :container => false %>
+  </div>
+</div>
+

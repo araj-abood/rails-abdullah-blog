@@ -9,6 +9,12 @@
           <% if article.user %>
             <%= link_to "by #{article.user.username}", user_path(article.user) %>
           <% end %>
+          <% if !article.categories.empty? %>
+            <div style="display: flex; flex-direction: row; justify-content: center; gap: 12px">
+              <%= render article.categories %>
+            </div>
+          <% end %>
+
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= link_to article.title, article_path(article), class: "link-green" %></h5>

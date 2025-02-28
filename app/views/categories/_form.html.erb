@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <%= render "shared/error", obj: @category %>
+
+  <%= form_with model: @category, class: "form-group  shadow-sm" do |form| %>
+    <div class="form-article__label-value">
+      <%= form.label :name, "Category name", class: "form-article__label" %>
+      <%= form.text_field :name, class: "form-control", placeholder: "Enter category name" %>
+    </div>
+
+
+    <div style="text-align: center" class="mt-5">
+      <%= form.submit class: "btn btn-outline-primary article-form__submit" %>
+    </div>
+  <% end %>
+</div>
